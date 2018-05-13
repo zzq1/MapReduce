@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="C:\Users\zzq\eclipse-workspace\jeesite-master"/>
+	</list>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\zzq\Downloads\SpringMVCMybatis(jb51.net)\reg"/>
+			<item value="C:\Users\zzq\eclipse-workspace\lastone"/>
+			<item value="C:\Users\zzq\eclipse-workspace\energyAanalysis_v2"/>
+			<item value="C:\Users\zzq\Desktop\Kafka\kafka-test"/>
+			<item value="C:\Users\zzq\eclipse-workspace\kafka-test"/>
+			<item value="C:\Users\zzq\eclipse-workspace\hbaseTrain"/>
+			<item value="C:\Users\zzq\Desktop\HADOOP\第6课 分布式面向列的数据库HBase\hbaseTrain"/>
+			<item value="C:\Users\zzq\Desktop\HADOOP\第6课 分布式面向列的数据库HBase\hbaseTrain\ht"/>
+			<item value="C:\Users\zzq\eclipse-workspace\hBaseTrain"/>
+			<item value="C:\Users\zzq\eclipse-workspace\hbaseTrain0"/>
+			<item value="C:\Users\zzq\eclipse-workspace\hiveUDF"/>
+			<item value="C:\Users\zzq\eclipse-workspace\facebook-UDF-library-master"/>
+			<item value="C:\Users\zzq\eclipse-workspace\BookCode"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.jdt.ui.wizards.JavaProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.jdt.ui.java"/>
+			<item value="org.eclipse.m2e"/>
+		</list>
+	</section>
+</section>

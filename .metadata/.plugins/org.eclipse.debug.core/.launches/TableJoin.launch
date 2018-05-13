@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/MapreduceTest/src/com/neu/mapreduce/wordCount/WordCount.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<mapAttribute key="org.eclipse.debug.core.environmentVariables">
+<mapEntry key="HADOOP_USER_NAME" value="root"/>
+</mapAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.neu.mapreduce.wordCount.WordCount"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="hdfs://172.17.11.156:9000/zzq/input/wordCount/&#13;&#10;hdfs://172.17.11.156:9000/zzq/output/"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="MapreduceTest"/>
+</launchConfiguration>

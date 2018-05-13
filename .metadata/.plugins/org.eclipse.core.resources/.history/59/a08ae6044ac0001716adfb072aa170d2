@@ -1,0 +1,123 @@
+package com.neu.hive.UDAF;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.TreeMap;
+
+import org.apache.hadoop.hive.ql.exec.Description;
+import org.apache.hadoop.hive.ql.exec.UDAF;
+import org.apache.hadoop.hive.ql.exec.UDAFEvaluator;
+import org.apache.hadoop.hive.ql.metadata.HiveException;
+
+@Description(name = "ToUpperCaseUDF", value = "Returns upper case of a given string", extended = "SELECT toUpperCase('Hello World!');")
+public final class top extends UDAF{
+	
+	/*public static class StringDoublePair implements Comparable<StringDoublePair>{
+		
+		private String key;
+		private Double value;
+		public StringDoublePair(){
+			this.key=null;
+			this.value=null;
+		}
+		public StringDoublePair(String key, double value){
+			this.key=key;
+			this.value=value;
+		}
+		public String getString() {
+		    return this.key;
+		}
+		public int compareTo(StringDoublePair o) {
+			// TODO Auto-generated method stub
+			return o.value.compareTo(this.value);
+		}
+	}*/
+	
+        public static class UDAFTopKState {
+            // The head of the queue should contain the smallest element.
+            private ArrayList<Double> ll;
+        }
+        public static class UDAFTopKEvaluator implements UDAFEvaluator{
+
+        	UDAFTopKState state;
+        	public UDAFTopKEvaluator() {
+        	    super();
+        	    state = new UDAFTopKState();
+        	    init();
+        	}
+        	
+        	public void init(){
+        		state.ll=new ArrayList<Double>();
+        	}
+        	public boolean iterate(Double value) throws HiveException{
+        		TreeMap<Double,Double> tMap = new TreeMap<Double,Double>();
+        		if(value!=null){
+        			tMap.put(value, value);
+        			if (tMap.size() > 10) {
+						tMap.remove(tMap.firstKey());
+					}
+        			for(Double wsDouble : tMap.values()) {
+        				state.ll.add(tMap.get(wsDouble));
+        			}
+        			
+				}
+        		return true;
+//				if(value!=null){
+//					state.ll.add(value);
+//					Collections.sort(state.ll);
+//	        		while(state.ll.size()>10){
+//	        			state.ll.remove(0);
+//	        		}
+//				}
+//        		return true;      		
+        	}
+        	public boolean merge(UDAFTopKState o)throws HiveException{
+        		TreeMap<Double,Double> tMap1 = new TreeMap<Double,Double>();
+        		if(o!=null){
+        			state.ll.addAll(o.ll);
+        			for (int i = 0;i < state.ll.size();i++) {
+        				tMap1.put(o.ll.get(i), o.ll.get(i));
+        				if (tMap1.size() > 10) {
+							tMap1.remove(tMap1.firstKey());
+						}
+        			}
+        			    			
+        		}
+        		for(Double wDouble : tMap1.values()) {
+    				state.ll.add(tMap1.get(wDouble));
+    			} 
+//        		if(o!=null){
+//        			state.ll.addAll(o.ll);
+//        			Collections.sort(state.ll);
+//        		}
+//        		while(state.ll.size()>10){
+//        			state.ll.remove(0);
+//        		}
+//        		
+        		return true;
+        	}
+        	
+        	
+        	public UDAFTopKState terminatePartial() {
+        	    if (state.ll.size() > 0) {
+        		return state;
+        	    } else {
+        		return null;
+        	    }
+        	}
+
+        	public ArrayList<Double> terminate() {
+//        		ArrayList<Double> result = new ArrayList<Double>();
+//        	    Iterator<Double> iter= state.ll.iterator();
+//    			while(iter.hasNext()){
+//    				result.add(iter.next());
+//    			}
+//    			Collections.sort(result);
+//        	    return result;
+        		return state.ll;
+        	}
+
+        	
+        }
+}
